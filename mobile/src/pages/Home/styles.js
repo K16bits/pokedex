@@ -13,23 +13,34 @@ export const Wrapper = styled.View`
     width: 80%;
     height: 400px;
     margin: 0px auto;
-    color: white;
-    border: 1px;
+    color: white;  
 `;
 
 export const CardWapper = styled.View`
     align-items: center;
     margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px white;
+    border-radius: 4px;
+    padding: 5px;
 `;
 
 export const CardPokemon = styled.Image`
     width: 100px;
     height: 100px;
-    border: 1px;
     background-color: rgba(255,255,255,0.3);
 `;
 
 export const NamePokemon = styled.Text`
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
+`;
+
+export const TypePokemon = styled.Text`
+    color:white;
     font-size: 18px;
     font-weight: bold;
 `;
@@ -39,4 +50,14 @@ export const Title = styled.Text`
     text-align:center;
     margin:5px;
     color: white;
+    margin-top: 50px;
 `;
+
+export const CardInfo = styled.Text`
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+export const Describe = styled.Text``;
