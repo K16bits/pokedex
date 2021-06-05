@@ -36,34 +36,33 @@ export default function Home(){
     useEffect(()=>{
         getdata();
     },[])
-    
+
+    const objetoPokemon = [
+        {
+            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+            nome : 'charmander',
+            tipo : 'fire'
+        },{
+            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+            nome :'charmander',
+            tipo : 'gree'
+        }]
 
     return(
         <Container>
             <Title>PokeDEX</Title>
             <Wrapper>
-                <CardWapper>
-                    <CardPokemon source={{uri:imagePokemon}}></CardPokemon>
-                    <CardInfo>
-                        <NamePokemon>{name}</NamePokemon>
-                        <TypePokemon>{type}</TypePokemon>
-                    </CardInfo>
-                </CardWapper>
-                <CardWapper>
-                    <CardPokemon source={{uri:URLbulba}}></CardPokemon>
-                    <CardInfo>
-                        <NamePokemon>{name}</NamePokemon>
-                        <TypePokemon>{type}</TypePokemon>
-                    </CardInfo>
-                </CardWapper>
-                <CardWapper>
-                    <CardPokemon source={{uri:URLbulba}}></CardPokemon>
-                    <CardInfo>
-                        <NamePokemon>{name}</NamePokemon>
-                        <TypePokemon>{type}</TypePokemon>
-                    </CardInfo>
-                </CardWapper>
-
+                {objetoPokemon.map( elemento =>{
+                    return(
+                            <CardWapper>
+                                <CardPokemon source={{uri:elemento.img}}></CardPokemon>
+                                <CardInfo>
+                                    <NamePokemon>{elemento.nome}</NamePokemon>
+                                    <TypePokemon>{elemento.tipo}</TypePokemon>
+                                </CardInfo>
+                            </CardWapper>
+                    )
+                })}
             </Wrapper>
         </Container>
     )
