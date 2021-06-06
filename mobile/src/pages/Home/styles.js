@@ -9,7 +9,7 @@ export const Container = styled.View`
     flex: 1;
 `;
 
-export const Wrapper = styled.View`
+export const Wrapper = styled.ScrollView`
     width: 80%;
     height: 400px;
     margin: 0px auto;
