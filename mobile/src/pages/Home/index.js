@@ -16,92 +16,39 @@ import {
 
 export default function Home(){
     
-    //const URLbulba = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
+    const [dados,setdados] = useState([]);  
 
-    const [dados,setdados] = useState([]);     
-    async function getdata(){
-         for(let i = 1; i <= 150;i++){
-            api.get((i).toString()).then(
-            (Response)=>{
-                const info = Response.data;
-                //console.log(Response.data.name)
-
-                const pokemonObjeto = {
-                    id:   info.id,
-                    nome: info.name,
-                    tipo: info.types[0].type.name,
-                    image: info.sprites.front_default,
-                }
-              
-                //console.log(pokemonObjeto)
-                setdados([...dados,pokemonObjeto])
-                console.log(dados)
-            }
-            )
-        }
+    useEffect( ()=>{
+        const colecao = [];
+        for(let x = 1 ; x <= 150;x++){
+           colecao.push(api.get(x.toString()).then(Response => Response.data) )
+        }            
         
-    }
-
-    useEffect(()=>{
-        getdata();
-        console.log(dados)
+        Promise.all(colecao).then(
+            Response =>{
+                setdados(Response)
+            }
+        )
     },[])
-
-    const objetoPokemon = [
-        {   id : 1,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome : 'charmander',
-            tipo : 'fire'
-        },{
-            id : 2,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        },{
-            id : 3,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        },{
-            id : 4,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        },{
-            id : 5,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        },{
-            id : 6,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        },{
-            id : 7,
-            img : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-            nome :'charmander',
-            tipo : 'gree'
-        }
-    ]
 
     return(
         <Container>
             <Title>PokeDEX</Title>
             <Wrapper>
-                {objetoPokemon.map( elemento =>{
+                <NamePokemon></NamePokemon>
+                <NamePokemon></NamePokemon>
+                {dados.map( elemento =>{
                     return(
                             <CardWapper key={elemento.id}>
-                                <CardPokemon source={{uri:elemento.img}}></CardPokemon>
+                                <CardPokemon source={{uri:elemento.sprites.front_default}}></CardPokemon>
                                 <CardInfo>
-                                    <NamePokemon>{elemento.nome}</NamePokemon>
-                                    <TypePokemon>{elemento.tipo}</TypePokemon>
+                                    <NamePokemon>{elemento.name}</NamePokemon>
+                                    <TypePokemon>{elemento.types[0].type.name}</TypePokemon>
                                 </CardInfo>
                             </CardWapper>
                     )
                 })}
             </Wrapper>
-        
         </Container>
     )
 }
