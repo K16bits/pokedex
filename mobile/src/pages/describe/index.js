@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { Text } from 'react-native';
 import api from '../../../services/api'
 
 import {
     Wrapper,
+    Card,
     Name,
     ImagePokemon,
+    PokemonInfo
 } from './styles'
 
 
@@ -18,7 +21,9 @@ export default function Describe({route}){
                 SetpokemonInfo({
                     id:data.data.id,
                     nome:data.data.name,
-                    image:data.data.sprites.front_default
+                    image:data.data.sprites.other['official-artwork'].front_default,
+                    altura: data.data.height,
+                    peso: data.data.weight
                 })
             })
     }
@@ -26,8 +31,14 @@ export default function Describe({route}){
 
     return(
         <Wrapper>
-            <ImagePokemon source={{uri:pokemonInfo.image}}></ImagePokemon>
-            <Name>{pokemonInfo.nome}</Name>
+            <Card>
+                <ImagePokemon source={{uri:pokemonInfo.image}}></ImagePokemon>
+                <PokemonInfo>
+                    <Name>{pokemonInfo.nome}</Name>
+                    <Text>{pokemonInfo.altura}</Text>
+                    <Text>{pokemonInfo.peso}</Text>
+                </PokemonInfo>
+            </Card>
         </Wrapper>
     )
 }
