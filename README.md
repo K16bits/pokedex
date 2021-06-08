@@ -1,4 +1,4 @@
-# pokedex
+# pokedex usando Expo
 ## Ainda em desenvolvimento 
 
 # Start
