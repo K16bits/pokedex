@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View,Text } from 'react-native';
+import { View,Text,TouchableOpacity } from 'react-native';
 
 import api from '../../../services/api'
 
@@ -14,7 +14,7 @@ import {
     CardInfo,
 } from './styles'
 
-export default function Home(){
+export default function Home({navigation}){
     
     const [dados,setdados] = useState([]);  
 
@@ -31,6 +31,23 @@ export default function Home(){
         )
     },[])
 
+    function chanceColor(type){
+        if(type === "fire"){
+            return "red";
+        }else if(type === "water"){
+            return "blue";
+        }else if(type === "grass"){
+            return "green";
+        }else if(type === "poison"){
+            return "purple";
+        }else if(type === "electric"){
+            return "yellow";
+        }else{
+            return "white"
+        }
+    }
+
+
     return(
         <Container>
             <Title>PokeDEX</Title>
@@ -39,13 +56,15 @@ export default function Home(){
                 <NamePokemon></NamePokemon>
                 {dados.map( elemento =>{
                     return(
-                            <CardWapper key={elemento.id}>
+                        <TouchableOpacity key={elemento.id} onPress={()=> navigation.navigate('Describe',{idPokemon:elemento.id})}>
+                            <CardWapper cor={chanceColor(elemento.types[0].type.name)}>
                                 <CardPokemon source={{uri:elemento.sprites.front_default}}></CardPokemon>
                                 <CardInfo>
                                     <NamePokemon>{elemento.name}</NamePokemon>
                                     <TypePokemon>{elemento.types[0].type.name}</TypePokemon>
                                 </CardInfo>
                             </CardWapper>
+                        </TouchableOpacity>
                     )
                 })}
             </Wrapper>

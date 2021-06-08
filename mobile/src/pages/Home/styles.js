@@ -22,9 +22,9 @@ export const CardWapper = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: 1px white;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 5px;
+    border: 2px ${props => props.cor};
 `;
 
 export const CardPokemon = styled.Image`
