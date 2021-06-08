@@ -4,6 +4,7 @@ import { createStackNavigator} from '@react-navigation/stack'
 
 import Splash from './src/pages/Splash'
 import Home from './src/pages/Home'
+import Describe from './src/pages/describe'
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
         <Stack.Screen name='splash' component={Splash}></Stack.Screen>
         <Stack.Screen name='Home' component={Home}></Stack.Screen>
+        <Stack.Screen name='Describe' component={Describe}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
