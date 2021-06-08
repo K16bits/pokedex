@@ -15,7 +15,7 @@
 
 # Rodando o aplicativo no celular
 - Baixe no seu celular o [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pt_BR&gl=US)
-- Escanei o qrcode e pronto
+- Escaneie o qrcode e pronto
 
 ![alt inicial](https://github.com/K16bits/pokedex/blob/main/screens/1.PNG)
 ![alt descricao](https://github.com/K16bits/pokedex/blob/main/screens/2.PNG)
