@@ -22,6 +22,7 @@ export default function Describe({route}){
                     id:data.data.id,
                     nome:data.data.name,
                     image:data.data.sprites.other['official-artwork'].front_default,
+                    tipo: data.data.types[0].type.name,
                     altura: data.data.height,
                     peso: data.data.weight
                 })
@@ -36,6 +37,7 @@ export default function Describe({route}){
                 <PokemonInfo>
                     <DataInfo>N: {pokemonInfo.id}</DataInfo>
                     <DataInfo>Nome: {pokemonInfo.nome}</DataInfo>
+                    <DataInfo>Tipo: {pokemonInfo.tipo}</DataInfo>
                     <DataInfo>Altura: {pokemonInfo.altura} ?</DataInfo>
                     <DataInfo>Peso: {pokemonInfo.peso} ?</DataInfo>
                 </PokemonInfo>
