@@ -24,7 +24,6 @@ export const ImagePokemon = styled.Image`
     width: 230px;
     height: 230px;
     margin-top: 250px;
-    border: 1px solid white;
     background-color: rgba(225,255,255,0.5);
 `;
 

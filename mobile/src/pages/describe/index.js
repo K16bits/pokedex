@@ -36,8 +36,8 @@ export default function Describe({route}){
                 <PokemonInfo>
                     <DataInfo>N: {pokemonInfo.id}</DataInfo>
                     <DataInfo>Nome: {pokemonInfo.nome}</DataInfo>
-                    <DataInfo>Altura: {pokemonInfo.altura}</DataInfo>
-                    <DataInfo>Peso: {pokemonInfo.peso}</DataInfo>
+                    <DataInfo>Altura: {pokemonInfo.altura} ?</DataInfo>
+                    <DataInfo>Peso: {pokemonInfo.peso} ?</DataInfo>
                 </PokemonInfo>
             </Card>
         </Wrapper>
