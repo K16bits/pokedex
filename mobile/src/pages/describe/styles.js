@@ -14,8 +14,8 @@ export const Card = styled.View`
     
 `;
 
-export const Name = styled.Text`
-    font-size: 32px;
+export const DataInfo = styled.Text`
+    font-size: 30px;
     color: white;
     text-transform: capitalize;
 `;
@@ -23,11 +23,14 @@ export const Name = styled.Text`
 export const ImagePokemon = styled.Image`
     width: 230px;
     height: 230px;
-    margin-top: 100px;
+    margin-top: 250px;
     border: 1px solid white;
+    background-color: rgba(225,255,255,0.5);
 `;
 
 export const PokemonInfo = styled.View`
-    width: 100%;
+    width: 250px;
+    margin: 10px;
+    padding: 5px;
     border: 1px white;
 `;

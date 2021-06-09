@@ -5,7 +5,7 @@ import api from '../../../services/api'
 import {
     Wrapper,
     Card,
-    Name,
+    DataInfo,
     ImagePokemon,
     PokemonInfo
 } from './styles'
@@ -34,9 +34,10 @@ export default function Describe({route}){
             <Card>
                 <ImagePokemon source={{uri:pokemonInfo.image}}></ImagePokemon>
                 <PokemonInfo>
-                    <Name>{pokemonInfo.nome}</Name>
-                    <Text>{pokemonInfo.altura}</Text>
-                    <Text>{pokemonInfo.peso}</Text>
+                    <DataInfo>N: {pokemonInfo.id}</DataInfo>
+                    <DataInfo>Nome: {pokemonInfo.nome}</DataInfo>
+                    <DataInfo>Altura: {pokemonInfo.altura}</DataInfo>
+                    <DataInfo>Peso: {pokemonInfo.peso}</DataInfo>
                 </PokemonInfo>
             </Card>
         </Wrapper>
