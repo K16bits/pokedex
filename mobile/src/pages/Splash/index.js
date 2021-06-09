@@ -13,14 +13,14 @@ export default function Splash({navigation}){
     }
 
     useEffect(()=>{
-        setTimeout(()=>{handleLogin()},2000)
+        setTimeout(()=>{handleLogin()},1000)
     },[])
     
     const URLpikachu = 'https://i.pinimg.com/736x/2f/47/df/2f47df61c3c9524ca7c6418b02be5c95.jpg'
     
     return(
         <Container>
-            <ImageBackground source ={URLpikachu}></ImageBackground>
+            <ImageBackground source ={{uri:URLpikachu}}></ImageBackground>
         </Container>
     )
 }
