@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import { theme } from '../../globalStyles/theme';
 
-const {height} = Dimensions.get('screen') // Ver depois no celular
+const { height } = Dimensions.get('screen') // Ver depois no celular
 
 export const Container = styled.View`
-    background-color: #197278;
+    background-color: ${theme.color.primary};
     flex: 1;
 `;
 
@@ -30,10 +31,11 @@ export const CardWapper = styled.View`
 export const CardPokemon = styled.Image`
     width: 100px;
     height: 100px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: ${theme.color.secondarytransparent};
 `;
 
 export const NamePokemon = styled.Text`
+    font-family: ${theme.fonts.inter400};
     color:white;
     font-size: 18px;
     font-weight: bold;
@@ -44,8 +46,10 @@ export const TypePokemon = styled.Text`
     color:white;
     font-size: 18px;
     font-weight: bold;
+    text-transform: capitalize;
 `;
 export const Title = styled.Text`
+    font-family: ${theme.fonts.inter500};
     font-size: 32px;
     font-weight: bold;
     text-align:center;
@@ -57,7 +61,7 @@ export const Title = styled.Text`
 export const CardInfo = styled.Text`
     align-items: center;
     justify-content: center;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
 `;

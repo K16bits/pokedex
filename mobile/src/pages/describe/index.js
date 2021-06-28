@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Text } from 'react-native';
 import api from '../../../services/api'
 
 import {
-    Wrapper,
+    Container,
     Card,
     DataInfo,
     ImagePokemon,
@@ -31,7 +30,7 @@ export default function Describe({route}){
     ,[])
 
     return(
-        <Wrapper>
+        <Container>
             <Card>
                 <ImagePokemon source={{uri:pokemonInfo.image}}></ImagePokemon>
                 <PokemonInfo>
@@ -42,6 +41,6 @@ export default function Describe({route}){
                     <DataInfo>Peso: {pokemonInfo.peso} ?</DataInfo>
                 </PokemonInfo>
             </Card>
-        </Wrapper>
+        </Container>
     )
 }

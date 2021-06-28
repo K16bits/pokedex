@@ -1,7 +1,8 @@
 import styled from 'styled-components/native'
+import {theme} from '../../globalStyles/theme'
 
-export const Wrapper = styled.View`
-    background-color: #197278;
+export const Container = styled.View`
+    background-color: ${theme.color.primary};
     flex: 1;
     align-items: center;
 `;
@@ -11,13 +12,13 @@ export const Card = styled.View`
     height: 50%;
     align-items: center;
     justify-content: center;
-    
 `;
 
 export const DataInfo = styled.Text`
     font-size: 30px;
     color: white;
     text-transform: capitalize;
+    font-family: ${theme.fonts.inter400};
 `;
 
 export const ImagePokemon = styled.Image`
@@ -33,3 +34,4 @@ export const PokemonInfo = styled.View`
     padding: 5px;
     border: 1px white;
 `;
+

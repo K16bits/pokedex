@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View,Text,TouchableOpacity } from 'react-native';
-
+import { TouchableOpacity,View } from 'react-native';
+import { colorType } from '../../utils/colorType'
 import api from '../../../services/api'
+
+import Load from '../../components/Load'
 
 import {
     Container,
@@ -14,59 +16,48 @@ import {
     CardInfo,
 } from './styles'
 
-export default function Home({navigation}){
-    
-    const [dados,setdados] = useState([]);  
+export default function Home({ navigation }) {
 
-    useEffect( ()=>{
+    const [dados, setdados] = useState([]);
+    const [loading,setLoading] = useState(true)
+
+    useEffect(() => {
         const colecao = [];
-        for(let x = 1 ; x <= 150;x++){
-           colecao.push(api.get(x.toString()).then(Response => Response.data) )
-        }            
-        
+        for (let x = 1; x <= 150; x++) {
+            colecao.push(api.get(x.toString()).then(Response => Response.data))
+        }
+
         Promise.all(colecao).then(
-            Response =>{
+            Response => {
                 setdados(Response)
             }
-        )
-    },[])
+        ).finally(()=>{
+            setLoading(false)
+        })
+    }, [])
 
-    function chanceColor(type){
-        if(type === "fire"){
-            return "red";
-        }else if(type === "water"){
-            return "blue";
-        }else if(type === "grass"){
-            return "green";
-        }else if(type === "poison"){
-            return "purple";
-        }else if(type === "electric"){
-            return "yellow";
-        }else{
-            return "white"
-        }
-    }
-
-
-    return(
+    return (
         <Container>
-            <Title>PokeDEX</Title>
+            <Title>Pokédex</Title>
             <Wrapper>
-                <NamePokemon></NamePokemon>
-                <NamePokemon></NamePokemon>
-                {dados.map( elemento =>{
-                    return(
-                        <TouchableOpacity key={elemento.id} onPress={()=> navigation.navigate('Describe',{idPokemon:elemento.id})}>
-                            <CardWapper cor={chanceColor(elemento.types[0].type.name)}>
-                                <CardPokemon source={{uri:elemento.sprites.front_default}}></CardPokemon>
-                                <CardInfo>
-                                    <NamePokemon>{elemento.name}</NamePokemon>
-                                    <TypePokemon>{elemento.types[0].type.name}</TypePokemon>
-                                </CardInfo>
-                            </CardWapper>
-                        </TouchableOpacity>
-                    )
-                })}
+                {
+                    loading ? <Load /> :
+                    dados.map(elemento => {
+                        return (
+                            <TouchableOpacity key={elemento.id} onPress={() => navigation.navigate('Describe', { idPokemon: elemento.id })}>
+                                <CardWapper cor={colorType(elemento.types[0].type.name)}>
+                                    <CardPokemon source={{ uri: elemento.sprites.front_default }}></CardPokemon>
+                                    <CardInfo>
+                                        <View>
+                                            <NamePokemon>{elemento.name}</NamePokemon>
+                                            <TypePokemon>{elemento.types[0].type.name}</TypePokemon>
+                                        </View>
+                                    </CardInfo>
+                                </CardWapper>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
             </Wrapper>
         </Container>
     )
