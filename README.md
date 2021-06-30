@@ -1,5 +1,5 @@
 # Pokedex usando Expo
-(Ainda em desenvolvimento)
+
 # Requisito
   - [Nodejs](https://nodejs.org/en/) 
   - [Expo](https://docs.expo.io/get-started/installation/)
